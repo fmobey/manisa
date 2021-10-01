@@ -1,0 +1,15 @@
+{
+    "TB_MQTT": "10.145.65.193",
+    "Sensor_SHT_token": "TUBERKULOZ290-ORTSHT",
+    "Sensor_HTU_token": "XXXXX-ORT-HTU",
+    "Sensor_Status0": "TUBERKULOZ-290-BIR",
+    "Sensor_Status1": "XXXXXX-4-IKI",
+    "Sensor_Status2": "XXXXX-18-UC",
+    "IS_MAX_TB_TOKEN": "XXXXXX-80-MAX",
+    "Is_Sensor_SHT": 1,
+    "Is_Sensor_HTU": 0,
+    "IS_Sensor_MAX31856": 0,
+    "DATA_POST_TIME": 6,
+    "NTP_IP": "0.tr.pool.ntp.org",
+    "IS_PASSIVE": 0
+}
