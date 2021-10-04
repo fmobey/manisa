@@ -81,9 +81,6 @@ get_ip_add = subprocess.Popen("hostname -I", shell=True, stdout=subprocess.PIPE)
 ip_add = get_ip_add.read()
 lcd.message('%.14s' % (ip_add.decode()))  # Give a intro message
 time.sleep(10)
-lcd.message('SHT TOKEN \n')
-lcd.message('%.14s' % (Sensor_SHT_token))
-lcd.message('HTU TOKEN \n')
 lcd.message('%.14s' % (Sensor_HTU_token))
 time.sleep(10)
 
