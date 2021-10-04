@@ -1,7 +1,7 @@
 {
     "TB_MQTT": "10.145.65.193",
-    "Sensor_SHT_token": "TUBERKULOZ290-ORTSHT",
-    "Sensor_HTU_token": "XXXXX-ORT-HTU",
+    "Sensor_SHT_token": "FMO  ADAM",
+    "Sensor_HTU_token": "YUMURTA4",
     "Sensor_Status0": "TUBERKULOZ-290-BIR",
     "Sensor_Status1": "XXXXXX-4-IKI",
     "Sensor_Status2": "XXXXX-18-UC",
