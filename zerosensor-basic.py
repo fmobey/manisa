@@ -83,7 +83,7 @@ lcd.message('%.14s' % (ip_add.decode()))  # Give a intro message
 time.sleep(4)
 lcd.clear()
 lcd.message('   MicroZerr \n')
-lcd.message('   %.14s' % (Sensor_SHT_token))
+lcd.message('%.14s' % (Sensor_SHT_token))
 
 
 # -----------------------------------------------------
@@ -350,11 +350,11 @@ try:
 
             lcd.clear()  # Clear the LCD screen
             lcd.message('   MicroZerr \n')  # Give a intro message
-            lcd.message('  %.14s' % (ip_add.decode()))  # Give a intro message
+            lcd.message('%.14s' % (ip_add.decode()))  # Give a intro message
             lcd.clear()
             time.sleep(4)
             lcd.message('   MicroZerr\n')
-            lcd.message('   %.14s' % (Sensor_SHT_token))
+            lcd.message('%.14s' % (Sensor_SHT_token))
             time.sleep(8)
 
             try:
