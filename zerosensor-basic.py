@@ -81,9 +81,11 @@ get_ip_add = subprocess.Popen("hostname -I", shell=True, stdout=subprocess.PIPE)
 ip_add = get_ip_add.read()
 lcd.message('%.14s' % (ip_add.decode()))  # Give a intro message
 time.sleep(10)
+
 lcd.clear()
+lcd.message('   TOKEN1 \n')
 lcd.message('%.14s' % (Sensor_SHT_token))
-time.sleep(10)
+
 
 # -----------------------------------------------------
 # -----------------------------------------------------
@@ -350,6 +352,9 @@ try:
             lcd.clear()  # Clear the LCD screen
             lcd.message('   MicroZerr \n')  # Give a intro message
             lcd.message('  %.14s' % (ip_add.decode()))  # Give a intro message
+            lcd.clear()
+            lcd.message('   TOKEN2 \n')
+            lcd.message('%.14s' % (Sensor_SHT_token))
             time.sleep(8)
 
             try:
