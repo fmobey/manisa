@@ -80,10 +80,9 @@ lcd.message('   MicroZerr \n')  # Give a intro message
 get_ip_add = subprocess.Popen("hostname -I", shell=True, stdout=subprocess.PIPE).stdout
 ip_add = get_ip_add.read()
 lcd.message('%.14s' % (ip_add.decode()))  # Give a intro message
-time.sleep(10)
-
+time.sleep(4)
 lcd.clear()
-lcd.message('   TOKEN1 \n')
+lcd.message(' MicroZerr TOKEN \n')
 lcd.message('%.14s' % (Sensor_SHT_token))
 
 
@@ -353,7 +352,8 @@ try:
             lcd.message('   MicroZerr \n')  # Give a intro message
             lcd.message('  %.14s' % (ip_add.decode()))  # Give a intro message
             lcd.clear()
-            lcd.message('   TOKEN2 \n')
+            time.sleep(4)
+            lcd.message(' MicroZerr TOKEN \n')
             lcd.message('%.14s' % (Sensor_SHT_token))
             time.sleep(8)
 
