@@ -82,8 +82,8 @@ ip_add = get_ip_add.read()
 lcd.message('%.14s' % (ip_add.decode()))  # Give a intro message
 time.sleep(4)
 lcd.clear()
-lcd.message(' MicroZerr TOKEN \n')
-lcd.message('%.14s' % (Sensor_SHT_token))
+lcd.message('   MicroZerr \n')
+lcd.message('   %.14s' % (Sensor_SHT_token))
 
 
 # -----------------------------------------------------
@@ -353,8 +353,8 @@ try:
             lcd.message('  %.14s' % (ip_add.decode()))  # Give a intro message
             lcd.clear()
             time.sleep(4)
-            lcd.message(' MicroZerr TOKEN \n')
-            lcd.message('%.14s' % (Sensor_SHT_token))
+            lcd.message('   MicroZerr\n')
+            lcd.message('   %.14s' % (Sensor_SHT_token))
             time.sleep(8)
 
             try:
