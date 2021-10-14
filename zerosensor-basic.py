@@ -13,7 +13,7 @@ import smbus
 import json
 import socket
 import subprocess
-import Adafruit_CharLCD as LCD
+
 import glob
 # ----------------------------------------------------
 import Adafruit_GPIO
@@ -61,29 +61,16 @@ if Is_Sensor_HTU == 1:
 # -----------------------------------------------------
 # LCD Pin Definations
 # -----------------------------------------------------
-lcd_rs = 25  # RS of LCD is connected to GPIO 7 on PI
-lcd_en = 24  # EN of LCD is connected to GPIO 8 on PI
-lcd_d4 = 23  # D4 of LCD is connected to GPIO 25 on PI
-lcd_d5 = 17  # D5 of LCD is connected to GPIO 24 on PI
-lcd_d6 = 18  # D6 of LCD is connected to GPIO 23 on PI
-lcd_d7 = 22  # D7 of LCD is connected to GPIO 18 on PI
-lcd_backlight = 0  # LED is not connected so we assign to 0
 
 # ------------------------------------------------------
 # LCD Definations
 # -----------------------------------------------------
-lcd_columns = 16  # for 16*2 LCD
-lcd_rows = 2  # for 16*2 LCD
-lcd = LCD.Adafruit_CharLCD(lcd_rs, lcd_en, lcd_d4, lcd_d5, lcd_d6, lcd_d7, lcd_columns, lcd_rows,
-                           lcd_backlight)  # Send all the pin details to library
-lcd.message('   MicroZerr \n')  # Give a intro message
+
 get_ip_add = subprocess.Popen("hostname -I", shell=True, stdout=subprocess.PIPE).stdout
 ip_add = get_ip_add.read()
-lcd.message('%.14s' % (ip_add.decode()))  # Give a intro message
+  # Give a intro message
 time.sleep(4)
-lcd.clear()
-lcd.message('   MicroZerr \n')
-lcd.message('%.14s' % (Sensor_SHT_token))
+
 
 
 # -----------------------------------------------------
@@ -110,11 +97,7 @@ def SHT_Enable():
                 sensor_data['humdity'] = hum
                 sensor_data['dtime'] = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
                 client.publish('v1/devices/me/telemetry', json.dumps(sensor_data), 1)
-                lcd.clear()  # Clear the LCD screen
-                lcd.message(Sensor_SHT_token)
-                lcd.message('\n%.9s' % datetime.datetime.now().strftime("%H:%M:%S"))
-                lcd.message(' T:%.1f C \n' % temp)  # Display the value of temperature
-                time.sleep(5)
+
                 client.loop_stop()
                 client.disconnect()
             except:
@@ -163,11 +146,7 @@ def read_temp_ds18b20_bir():  # a function that grabs the raw temperature data f
                 sensor_data['temperature'] = temp_c
                 sensor_data['dtime'] = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
                 client.publish('v1/devices/me/telemetry', json.dumps(sensor_data), 1)
-                lcd.clear()  # Clear the LCD screen
-                lcd.message(Sensor_Status0)  # Status 0 = 1. cihaz
-                lcd.message('\n%.9s' % datetime.datetime.now().strftime("%H:%M:%S"))
-                lcd.message(' T:%.1f C \n' % temp_c)  # Display the value of temperature
-                time.sleep(5)
+
                 client.loop_stop()
                 client.disconnect()  # Status 0 = 1. cihaz
             except:
@@ -216,11 +195,7 @@ def read_temp_ds18b20_iki():  # a function that grabs the raw temperature data f
                 sensor_data['temperature'] = temp_c
                 sensor_data['dtime'] = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
                 client.publish('v1/devices/me/telemetry', json.dumps(sensor_data), 1)
-                lcd.clear()  # Clear the LCD screen
-                lcd.message(Sensor_Status1)  # Status 1 = 2. cihaz
-                lcd.message('\n%.9s' % datetime.datetime.now().strftime("%H:%M:%S"))
-                lcd.message(' T:%.1f C \n' % temp_c)  # Display the value of temperature
-                time.sleep(5)
+
                 client.loop_stop()
                 client.disconnect()  # Status 1 = 2. cihaz
             except:
@@ -267,11 +242,7 @@ def read_temp_ds18b20_uc():  # a function that grabs the raw temperature data fr
             sensor_data['temperature'] = temp_c
             sensor_data['dtime'] = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
             client.publish('v1/devices/me/telemetry', json.dumps(sensor_data), 1)
-            lcd.clear()  # Clear the LCD screen
-            lcd.message(Sensor_Status2)  # Status 2 = 3. cihaz
-            lcd.message('\n%.9s' % datetime.datetime.now().strftime("%H:%M:%S"))
-            lcd.message(' T:%.1f C \n' % temp_c)  # Display the value of temperature
-            time.sleep(5)
+
             client.loop_stop()
             client.disconnect()  # Status 2 = 3. cihaz
             return temp_c, device_id, Sensor_Status2
@@ -290,11 +261,7 @@ def max_sensor_temp():
     sensor_data['temperature'] = temp
     sensor_data['dtime'] = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     client.publish('v1/devices/me/telemetry', json.dumps(sensor_data), 1)
-    lcd.clear()  # Clear the LCD screen
-    lcd.message(IS_MAX_TB_TOKEN)  # MAX31856 LCD ISIM
-    lcd.message('\n%.9s' % datetime.datetime.now().strftime("%H:%M:%S"))
-    lcd.message(' T:%.1f C \n' % temp)  # Display the value of temperature
-    time.sleep(5)
+
     client.loop_stop()
     client.disconnect()  # MAX31856 NAME
     return temp, IS_MAX_TB_TOKEN
@@ -323,11 +290,7 @@ def HTU_Enable():
                 sensor_data['humdity'] = hum
                 sensor_data['dtime'] = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
                 client.publish('v1/devices/me/telemetry', json.dumps(sensor_data), 1)
-                lcd.clear()  # Clear the LCD screen
-                lcd.message(Sensor_HTU_token)
-                lcd.message('\n%.9s' % datetime.datetime.now().strftime("%H:%M:%S"))
-                lcd.message(' T:%.1f C \n' % temp)  # Display the value of temperature
-                time.sleep(5)
+
                 client.loop_stop()
                 client.disconnect()
             except:
@@ -348,13 +311,7 @@ try:
         if (currentMillis - send_time) > POST_TIMER:
             send_time = currentMillis
 
-            lcd.clear()  # Clear the LCD screen
-            lcd.message('   MicroZerr \n')  # Give a intro message
-            lcd.message('%.14s' % (ip_add.decode()))  # Give a intro message
-            lcd.clear()
-            time.sleep(4)
-            lcd.message('   MicroZerr\n')
-            lcd.message('%.14s' % (Sensor_SHT_token))
+ 
             time.sleep(8)
 
             try:
@@ -396,15 +353,11 @@ try:
         time.sleep(5)
 
 except KeyboardInterrupt:
-    lcd.clear()  # Clear the LCD screen
-    lcd.message('  HATA \n')  # Give a intro message
-    lcd.message(' %.14s' % (ip_add.decode()))  # Give a intro message
+
     time.sleep(100)
     pass
 except:
     print 'DONGU GENEL HATASI'
-    lcd.clear()  # Clear the LCD screen
-    lcd.message('  HATA \n')  # Give a intro message
-    lcd.message(' %.14s' % (ip_add.decode()))  # Give a intro message
+
     time.sleep(100)
     pass
